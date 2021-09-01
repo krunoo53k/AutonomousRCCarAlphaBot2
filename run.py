@@ -12,8 +12,18 @@ while True:
     if frame is None:
         print('--(!) No captured frame -- Break!')
         break
-    num_of_detected_stop_signs = functions.detectAndDisplay(frame, stop_cascade)
-    num_of_detected_traffic_lights = functions.detectAndDisplay(frame, traffic_cascade)
-    print(str(num_of_detected_stop_signs)+", "+str(num_of_detected_traffic_lights))
+
+    stop_signs = functions.detectAndDisplay(frame, stop_cascade)
+    traffic_lights = functions.detectAndDisplay(frame, traffic_cascade)
+
+    num_of_detected_stop_signs = len(stop_signs)
+    num_of_detected_traffic_lights = len(traffic_lights)
+
+    # print(str(num_of_detected_stop_signs) + ", " + str(num_of_detected_traffic_lights))
+
+    if num_of_detected_stop_signs > 0:
+        for object in stop_signs:
+            functions.distanceToObject(object, 70, 500, frame)
+
     if cv.waitKey(10) == 27:
         break
