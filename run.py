@@ -3,6 +3,8 @@ import os
 import functions
 
 cap = cv.VideoCapture("http://192.168.1.11:8080/?action=stream")
+
+
 stop_cascade = cv.CascadeClassifier(os.path.join(os.getcwd(), "haarcascades/stop_sign.xml"))
 traffic_cascade = cv.CascadeClassifier(os.path.join(os.getcwd(), "haarcascades/traffic_light.xml"))
 
@@ -11,6 +13,7 @@ while True:
     if frame is None:
         print('--(!) No captured frame -- Break!')
         break
+    frame = cv.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv.INTER_AREA)
     stop_signs = functions.detectAndDisplay(frame, stop_cascade)
     traffic_lights = functions.detectAndDisplay(frame, traffic_cascade)
 
