@@ -43,44 +43,30 @@ def getServerInput():
         if str_input == "Bye" or str_input == "bye":
             break
 
-
-def moveRobot():
-    try:
-        global str_input
-
-        while True:
-            print("Moving to: " + str_input)
-            if dist() < 25:
-                Ab.stop()
-                print("Obstacle detected, stopping.")
-                time.sleep(0.3)
-            elif str_input == "s":
-                Ab.stop()
-                print("Stop sign detected, stopping.")
-                time.sleep(0.3)
-            elif str_input == "w":
-                Ab.forward()
-                print("Going forward.")
-                time.sleep(0.02)
-            else:
-                Ab.stop()
-                time.sleep(0.3)
-    except KeyboardInterrupt:
-        GPIO.cleanup()
-        s.close()
+try:
+    while True:
+        print("Moving to: " + str_input)
+        if dist() < 25:
+            Ab.stop()
+            print("Obstacle detected, stopping.")
+            time.sleep(0.3)
+        elif str_input == "s":
+            Ab.stop()
+            print("Stop sign detected, stopping.")
+            time.sleep(0.3)
+        elif str_input == "w":
+            Ab.forward()
+            print("Going forward.")
+            time.sleep(0.02)
+        else:
+            Ab.stop()
+            time.sleep(0.3)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    s.close()
 
 
 thread1 = threading.Thread(target=getServerInput)
-thread2 = threading.Thread(target=moveRobot)
 
 thread1.start()
-thread2.start()
-
-while True:
-    if not thread1.is_alive():
-        print("Thread 1 died.")
-    if not thread2.is_alive():
-        print("Thread 2 died.")
-
 thread1.join()
-thread2.join()
