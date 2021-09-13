@@ -43,6 +43,10 @@ def getServerInput():
         if str_input == "Bye" or str_input == "bye":
             break
 
+
+thread1 = threading.Thread(target=getServerInput)
+thread1.start()
+
 try:
     while True:
         print("Moving to: " + str_input)
@@ -63,10 +67,8 @@ try:
             time.sleep(0.3)
 except KeyboardInterrupt:
     GPIO.cleanup()
+    thread1.join()
     s.close()
 
 
-thread1 = threading.Thread(target=getServerInput)
 
-thread1.start()
-thread1.join()
