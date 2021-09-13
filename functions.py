@@ -17,8 +17,8 @@ def distanceToObject(object, widthOfObject, focalLength, frame):
     perceivedWidth = object[3]
     distance = (widthOfObject * focalLength) / perceivedWidth
     # focalLength=(perceivedWidth*300)/widthOfObject
-    # cv.putText(frame, 'Christmas', (200, 200), cv.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 2, cv.LINE_AA) ovo ne radi
-    # iz nekog razloga?
+    cv.putText(frame, '{:05.2f}'.format(distance)+" mm", (object[0], object[1]), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv.LINE_AA)
+    cv.imshow('Capture - Stop sign detection', frame)
     print(distance)
     return distance
 

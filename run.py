@@ -24,7 +24,7 @@ while True:
     if frame is None:
         print('--(!) No captured frame -- Break!')
         break
-        rcvdData = c.recv(1024).decode()
+
     # frame = cv.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv.INTER_AREA)
     stop_signs = functions.detectAndDisplay(frame, stop_cascade)
     # traffic_lights = functions.detectAndDisplay(frame, traffic_cascade)
@@ -36,7 +36,7 @@ while True:
 
     if num_of_detected_stop_signs > 0:
         for object in stop_signs:
-            if  functions.distanceToObject(object, 70, 500, frame) < 350 and currentTime - lastStopTime >= 3:
+            if  functions.distanceToObject(object, 70, 900, frame) < 350 and currentTime - lastStopTime >= 3:
                 c.send("s".encode())
                 time.sleep(5)
                 lastStopTime = time.time()

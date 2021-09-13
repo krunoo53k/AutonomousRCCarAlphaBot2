@@ -47,8 +47,9 @@ def getServerInput():
 def moveRobot():
     try:
         global str_input
-        print("Moving to: " + str_input)
+
         while True:
+            print("Moving to: " + str_input)
             if dist() < 25:
                 Ab.stop()
                 print("Obstacle detected, stopping.")
