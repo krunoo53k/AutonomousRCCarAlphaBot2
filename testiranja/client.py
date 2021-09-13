@@ -34,6 +34,7 @@ def getServerInput():
 def moveRobot():
     try:
         global str_input
+        print("Moving to: "+str_input)
         while True:
             if str_input == "s":
                 Ab.stop()
@@ -47,8 +48,11 @@ def moveRobot():
         s.close()
 
 
-t1 = threading.Thread(target=getServerInput())
-t2 = threading.Thread(target=moveRobot())
+t1 = threading.Thread(target=getServerInput)
+t2 = threading.Thread(target=moveRobot)
+
+t1.start()
+t2.start()
 
 t1.join()
 t2.join()
