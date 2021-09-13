@@ -19,7 +19,7 @@ Ab.setPWMB(30)
 
 s = socket.socket()
 s.connect(('192.168.1.7', 12345))
-str_input = "s"
+str_input = "w"
 
 
 def dist():
