@@ -76,5 +76,11 @@ thread2 = threading.Thread(target=moveRobot)
 thread1.start()
 thread2.start()
 
+while True:
+    if not thread1.is_alive():
+        print("Thread 1 died.")
+    if not thread2.is_alive():
+        print("Thread 2 died.")
+
 thread1.join()
 thread2.join()
