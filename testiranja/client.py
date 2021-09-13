@@ -24,22 +24,31 @@ str_input = "s"
 
 def getServerInput():
     while True:
+        global str_input
         str_input = s.recv(1024).decode()
+        print(str_input)
         if str_input == "Bye" or str_input == "bye":
             break
 
 
+def moveRobot():
+    try:
+        global str_input
+        while True:
+            if str_input == "s":
+                Ab.stop()
+                time.sleep(0.3)
+            elif str_input == "w":
+                Ab.forward()
+                time.sleep(0.02)
+
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        s.close()
+
+
 t1 = threading.Thread(target=getServerInput())
+t2 = threading.Thread(target=moveRobot())
 
-try:
-    while True:
-        if str_input == "s":
-            Ab.stop()
-            time.sleep(0.3)
-        elif str_input == "w":
-            Ab.forward()
-            time.sleep(0.02)
-
-except KeyboardInterrupt:
-    GPIO.cleanup()
-    s.close()
+t1.join()
+t2.join()
