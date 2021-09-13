@@ -25,7 +25,7 @@ while True:
         print('--(!) No captured frame -- Break!')
         break
         rcvdData = c.recv(1024).decode()
-    frame = cv.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv.INTER_AREA)
+    # frame = cv.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv.INTER_AREA)
     stop_signs = functions.detectAndDisplay(frame, stop_cascade)
     # traffic_lights = functions.detectAndDisplay(frame, traffic_cascade)
     currentTime = time.time()

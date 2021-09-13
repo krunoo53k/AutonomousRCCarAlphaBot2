@@ -51,6 +51,7 @@ def moveRobot():
         while True:
             if dist() < 25:
                 Ab.stop()
+                print("Obstacle detected, stopping.")
                 time.sleep(0.3)
             elif str_input == "s":
                 Ab.stop()
