@@ -38,8 +38,8 @@ while True:
         for object in stop_signs:
             if 30 < functions.distanceToObject(object, 70, 500, frame) and currentTime - lastStopTime >= 3:
                 c.send("s".encode())
+                time.sleep(5)
                 lastStopTime = time.time()
-                wait(3)
                 c.send("w".encode())
     if cv.waitKey(10) == 27:
         c.close()
