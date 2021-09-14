@@ -39,7 +39,6 @@ def getServerInput():
     while True:
         global str_input
         str_input = s.recv(1024).decode()
-        print(str_input)
         if str_input == "Bye" or str_input == "bye":
             break
 
@@ -53,7 +52,6 @@ try:
         print("Moving to: " + str_input)
         if dist() < 25:
             Ab.stop()
-            print("Obstacle detected, stopping.")
             time.sleep(0.3)
         elif str_input == "s":
             Ab.stop()
@@ -61,11 +59,10 @@ try:
             time.sleep(0.3)
         elif str_input == "w":
             Ab.forward()
-            print("Going forward.")
-            time.sleep(0.02)
         else:
             Ab.stop()
             time.sleep(0.3)
+        time.sleep(0.02)
 except KeyboardInterrupt:
     GPIO.cleanup()
     thread1.join()

@@ -39,6 +39,7 @@ while True:
         for object in stop_signs:
             if functions.distanceToObject(object, 70, 900, frame) < 350 and currentTime - lastStopTime >= 3:
                 c.send("s".encode())
+                print("Stop sign detected, stopping for 5 seconds.")
                 time.sleep(5)
                 lastStopTime = time.time()
                 c.send("w".encode())
