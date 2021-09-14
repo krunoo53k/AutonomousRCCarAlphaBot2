@@ -44,7 +44,8 @@ def getServerInput():
             break
 
 
-thread1 = threading.Thread(target=getServerInput, daemon=True)
+thread1 = threading.Thread(target=getServerInput)
+thread1.setDaemon(True)
 thread1.start()
 
 try:
