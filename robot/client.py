@@ -49,7 +49,6 @@ thread1.start()
 
 try:
     while True:
-        print("Moving to: " + str_input)
         if dist() < 25:
             Ab.stop()
             time.sleep(0.3)
