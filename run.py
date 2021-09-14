@@ -6,6 +6,7 @@ import time
 
 # Grab the video stream from bot
 cap = cv.VideoCapture("http://192.168.1.11:8080/?action=stream")
+cap.set(cv.CAP_PROP_FOURCC, cv.VideoWriter.fourcc('m','j','p','g'))
 
 stop_cascade = cv.CascadeClassifier(os.path.join(os.getcwd(), "haarcascades/stop_sign.xml"))
 traffic_cascade = cv.CascadeClassifier(os.path.join(os.getcwd(), "haarcascades/traffic_light.xml"))
